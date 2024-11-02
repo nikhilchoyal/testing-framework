@@ -4,7 +4,7 @@ from config.base import *
 import json
 
 class FirstClient(BaseClient):
-    def __int__(self):
+    def __init__(self):
         super().__int__()
         self.base_url = BASE_URI
         self.request = APIRequest()

@@ -1,6 +1,9 @@
 import requests
 from dataclasses import dataclass
+import logging
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 @dataclass
 class APIResponse:
@@ -14,6 +17,7 @@ class APIRequest:
 
     def post_request(self, url, payload, headers):
         response = requests.post(url = url, headers= headers, data= payload)
+        logger.info(f"Response Body: {response.text}")
         return self.__get_responses(response)
     def get_request(self, url, headers, params):
         response = requests.get(url=url, headers=headers, params=params)
@@ -23,7 +27,7 @@ class APIRequest:
     @staticmethod
     def __get_responses(response):
         status_code = response.status_code
-        text = response.txt
+        text = response.text
         try:
             as_dict =response.json()
         except ValueError:
