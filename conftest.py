@@ -3,9 +3,9 @@ import pytest
 from utils.file_reader import read_file
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def context():
-    return "test context"
+    return {}
 
 
 @pytest.fixture(scope="session")

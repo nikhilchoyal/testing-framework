@@ -19,6 +19,7 @@ class APIRequest:
         response = requests.post(url = url, headers= headers, data= payload)
         logger.info(f"Response Body: {response.text}")
         return self.__get_responses(response)
+
     def get_request(self, url, headers, params):
         response = requests.get(url=url, headers=headers, params=params)
         return self.__get_responses(response)
@@ -36,7 +37,12 @@ class APIRequest:
         return APIResponse(status_code, text, as_dict, headers)
 
 
-
+logging.basicConfig(
+    filename='test.log',
+    filemode='w',
+    level=logging.DEBUG,
+    format = '%(asctime)s - %(levelname)s: %(message)s',
+)
 
 
 

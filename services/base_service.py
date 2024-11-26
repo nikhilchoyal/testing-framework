@@ -1,7 +1,4 @@
 
-
-
-
 class BaseClient:
     def __int__(self):
         self.headers = {
